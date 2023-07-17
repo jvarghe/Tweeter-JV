@@ -1,0 +1,19 @@
+nav {
+
+  height: 120px;
+  /* Width is set to the entirety of the viewport's width. */
+  width: 100vw;
+
+  background-color: #4056A1;
+  color: #FFFFFF;
+  font-family: Bungee, sans-serif;
+
+}
+
+
+/* Selecting `span` elements that are descendants of the `nav` element. */
+nav span {
+  font-family: Bungee;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
