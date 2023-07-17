@@ -1,3 +1,4 @@
+/* `nav` bar at the very top of Tweeter web pages. */
 nav {
 
   height: 120px;
@@ -6,14 +7,49 @@ nav {
 
   background-color: #4056A1;
   color: #FFFFFF;
-  font-family: Bungee, sans-serif;
 
+  display: flex;
+  justify-content: space-between;
 }
 
 
-/* Selecting `span` elements that are descendants of the `nav` element. */
+/* Selecting a `span` element that is a direct descendant of the `nav` element.
+ */
 nav span {
-  font-family: Bungee;
   margin-left: 1.5em;
   margin-right: 1.5em;
+}
+
+
+/* Targets the `TWEETER` Logo on the `nav` bar. */
+#Nav-Title{
+  font-family: Bungee;
+  font-size: 175%;
+  margin-top: 1.4em;
+}
+
+
+/* Targets the "Write a New Tweet!" & "Double angles down" icon on the right
+ * of the `nav` element.
+ */
+#New-Tweet-Invite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Source Sans 3", sans-serif;
+}
+
+
+/* Targets the "Write" in the "Write a New Tweet" span. */
+#Write {
+  margin-right: 0;
+  font-weight: 700;
+}
+
+
+/* Targets the "double angles down" icon. */
+.fa-angles-down {
+  color: #eb3d23;
 }

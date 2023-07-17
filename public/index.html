@@ -5,11 +5,14 @@
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
 
-  <!-- External CSS Normalize File -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    type="text/css" />
 
-  <!-- Fonts (from Google Fonts)  -->
+  <!-- MEDIA FILES (ICONS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <!-- FONTS (from Google Fonts)  -->
   <!-- Bungee (400) * Source Sans 3 (300 & 600) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,31 +21,46 @@
 
 
   <!-- CSS FILES -->
+  <!-- External CSS Normalize File -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
+
   <!-- Main CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
   <!-- Nav Bar CSS -->
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  
 
-  <!-- External JS -->
+
+  <!-- JAVASCRIPT FILES -->
+  <!--jQUERY -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  <!-- App JS -->
+  <!-- FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/adc918ce2d.js" crossorigin="anonymous"></script>
+
   <script type="text/javascript" src="/scripts/client.js"></script>
 </head>
 
 
 <body>
+
   <!-- Top nav bar (fixed) -->
   <nav>
-    <span>tweeter</span>
+    <span id="Nav-Title">tweeter</span>
+
+    <div id="New-Tweet-Invite">
+      <span> <span id="Write">Write</span> a New Tweet!</span>
+      <i class="fa-solid fa-angles-down"></i>
+    </div>
+
   </nav>
 
   <p>Is this rendered in Source Sans 3?</p>
 
   <!-- Page-specific (main) content here -->
   <main class="container"></main>
+
 </body>
 
 </html>
