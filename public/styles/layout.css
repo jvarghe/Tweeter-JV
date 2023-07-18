@@ -21,9 +21,19 @@ html {
 
 body {
   color: #545149;
-  background-color: #f4f1ec;
+  background-color: #F4F1EC;
   font-family : "Source Sans 3", sans-serif;
   font-size: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#Tweet-Container{
+  background-color: #F4F1EC;
+  width: 90%;
 }
 
 
