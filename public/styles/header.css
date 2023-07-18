@@ -1,0 +1,23 @@
+/* Targets the `header` element where the user image and name is displayed. */
+header {
+  /* Background Texture & Colour */
+  background-color: #B73239;
+  background-image: url("../images/brick-wall-dark.png");
+  background-repeat: repeat;
+
+  height: 520px;
+  width: 100vw;
+  padding-top: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Targets the `User Name` `h2` Heading. */
+header div h2 {
+  margin-top: -30px;
+  color: #FFFFFF;
+}
