@@ -34,6 +34,9 @@
   <!-- Header CSS -->
   <link rel="stylesheet" href="/styles/header.css" type="text/css">
 
+  <!-- New Tweet CSS -->
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
+
 
   <!-- JAVASCRIPT FILES -->
   <!--jQUERY -->
@@ -81,8 +84,29 @@
   <!-- TWEET DISPLAY CONTAINER -->
   <main id="Tweet-Container">
 
+    <!-- NEW TWEET CARD -->
+    <section id="New-Tweet-Form">
+
+      <h2>Compose Tweet</h2>
+
+      <!-- NEW TWEET FORM -->
+      <form method="POST" action="/tweets/">
+
+        <label for="tweet-text">What are you humming about?</label>
+        <textarea name="text" id="tweet-text" placeholder="Write your tweet here"></textarea>
+
+
+        <div>
+          <button type="submit">TWEET</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </div>
+
+      </form>
+
+    </section>
 
   </main>
+
 
 </body>
 
