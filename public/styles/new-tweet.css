@@ -79,3 +79,12 @@
 #New-Tweet-Form form output {
   font-weight: 600;
 }
+
+
+/* This is a special selector that is applied to the character counter output.
+ * It is triggered via `composer-char-counter.js` whenever the character count
+ * rises above 140.
+ */
+.Counter-Over-Limit {
+  color: #FF1100;
+}
