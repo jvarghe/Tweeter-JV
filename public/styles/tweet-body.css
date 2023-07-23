@@ -1,0 +1,96 @@
+/* Targets the `Tweet-Body` section. */
+#Tweet-Body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+
+/* Targets the tweet's full body.  */
+#Tweet-Body article:hover {
+  box-shadow: #C8CAE3 10px 10px;
+
+}
+
+
+/* Targets the article in the `Tweet-body`. */
+#Tweet-Body article {
+  width: 91%;
+  border: solid;
+
+  padding: 1.5rem;
+}
+
+
+/* Targets the `header` element in `Tweet-Body`. */
+#Tweet-Body header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* Targets the `div` containing the user photo and name. */
+#Tweet-Body header div {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Targets the user photo in each tweet's body. */
+#Tweet-Body header div img {
+  margin-right: 1rem;
+
+  height: 40px;
+  width: 40px;
+}
+
+
+/* Targets the User Tag, just above the tweet's body. */
+#Tweet-Body header a {
+  color: #d2d3e4;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+/* The element that displays the tweet's body. */
+#Tweet-Body article output {
+  width: 90%;
+  font-weight: 600;
+}
+
+
+/* The date element */
+#Tweet-Body footer p {
+  margin: 0.5rem;
+}
+
+
+/* The `footer` element in Tweet bodies. */
+#Tweet-Body footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: solid;
+  margin-top: 1rem;
+}
+
+
+/* Targets the `a` elements in the `div` containing the social media buttons (
+ * Flag, Re-tweet, Lik).
+ */
+#Tweet-Body footer div a {
+  color: #4055A1;
+}
+
+
+/* Targets the `a` elements in the `div` containing the social media buttons
+ * when you hover over the elements.
+ */
+#Tweet-Body footer div a:hover {
+  color: #C8992A;
+}
