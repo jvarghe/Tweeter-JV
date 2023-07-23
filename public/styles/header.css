@@ -1,5 +1,5 @@
 /* Targets the `header` element where the user image and name is displayed. */
-header {
+#User-Profile {
   /* Background Texture & Colour */
   background-color: #B73239;
   background-image: url("../images/brick-wall-dark.png");
@@ -17,7 +17,7 @@ header {
 
 
 /* Targets the `User Name` `h2` Heading. */
-header div h2 {
+#User-Profile div h2 {
   margin-top: -30px;
   color: #FFFFFF;
 }
