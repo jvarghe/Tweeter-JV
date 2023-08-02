@@ -29,9 +29,10 @@ $(document).ready(function() {
 
   // HANDLING NEW TWEET SUBMISSIONS
 
-  /* Event Handler: If a user decides to submit their own tweet, when they
-   * press submit, there needs to be an event handler to respond to it. This
-   * jQuery function is an event handler that listens for this event.
+  /* Event Listener for the `#New-Tweet-Section form`: If a user decides to
+   * submit their own tweet, when they press submit, there needs to be an event
+   * handler to respond to it. This jQuery function is an event handler that
+   * listens for this event.
    *
    * There is an event listener on the `#New-Tweet-Section` element (which is
    * NOT a form, but the parent of one). When the user hits `Submit`, the event
@@ -52,11 +53,36 @@ $(document).ready(function() {
 
     /* FORM DATA VALIDATION
      *
+     * Before passing the form data to the server, validate it to exclude any
+     * invalid data, such as empty tweets or tweets that are too long.
      *
+     * Future Ideas: You could trying using `trim()` to remove whitespace before
+     * and after the tweet. But in this case, tweets whose counter shows red
+     * still get accepted after the whitespace is trimmed, which might lead to
+     * confusion. Due to this, I've removed it.
      */
 
-    // const tweetLength = ${"#New-Tweet-Section form"}.val();
+    // Capture the raw tweet so that you can validate it.
+    const rawTweet = $("#tweet-text").val();
 
+    // Find the length of the tweet so that you can check if its too long.
+    const tweetLength = rawTweet.length;
+
+
+    // Check if the tweet is empty.
+    if ((rawTweet === "") || (rawTweet === null)) {
+      alert("The tweet cannot be empty!");
+      console.log("The tweet cannot be empty!");
+      return;
+
+      // Check if the tweet is longer than 140 characters.
+    } else if (tweetLength > 140) {
+
+      alert("The tweet cannot be longer than 140 characters!");
+      console.log("The tweet cannot be longer than 140 characters!");
+      return;
+
+    };
 
 
     /* SERIALIZING FORM DATA (INTO A QUERY STRING OR JSON STRING)
@@ -80,6 +106,11 @@ $(document).ready(function() {
      * You have to use jQuery's `.serialize()` function to turn a set of form
      * data into a query string. This serialized data should be sent to the
      * server in the `data` field of the AJAX POST request.
+     *
+     * PROBLEM: For some reason, passing in `rawTweet` produces the error that
+     * "rawTweet.serialize is not a function". I think this is because I'm
+     * trying to call a jQuery function on a JavaScript variable, so I've passed
+     * in the HTML form element instead. This works.
      */
 
     // console.log("Your Raw Tweet: ", $("#New-Tweet-Section form"));
@@ -88,15 +119,18 @@ $(document).ready(function() {
     // console.log("Your Serialized Tweet: ", newTweet);
 
 
-    // AJAX Call: Make an AJAX call to return data from the form to the server
-    // without refreshing the web page. Note that the AJAX function call takes
-    // only one required parameter, `url`. For some unknown reason, the
-    // professors are passing in an object which contains several keys like
-    // `url`, `type`, `data`, `success` and `error`. I guess this is an
-    // alternate way of passing arguments to AJAX.
-    //
-    // This method call passes the newly created tweet to the `/tweets` on the
-    // backend.
+    /* SUBMITTING FORM DATA TO THE SERVER VIA AJAX
+     *
+     * AJAX Call: Make an AJAX call to return data from the form to the server
+     * without refreshing the web page. Note that the AJAX function call takes
+     * only one required parameter, `url`. For some unknown reason, the
+     * teachers are passing in an object which contains several keys like
+     * `url`, `type`, `data`, `success` and `error`. I guess this is an
+     * alternate way of passing arguments to AJAX.
+     *
+     * This method call passes the newly created tweet to the `/tweets` on the
+     * backend.
+     */
     $.ajax({
 
       url: "/tweets",
