@@ -19,6 +19,7 @@
 
 
 
+// jQUERY BLOCK
 
 // Check the HTML document is ready before executing code.
 $(document).ready(function() {
@@ -197,7 +198,11 @@ $(document).ready(function() {
        * of tweets.
        */
       .then((tweetsArray) => {
-        renderTweets(tweetsArray);
+
+        // Reverse the tweets array so that the most recent tweets appear at
+        // the top of the Tweets Container.
+        const reversedArray = tweetsArray.reverse();
+        renderTweets(reversedArray);
       })
 
       // HANDLING ERRORS WITH PROMISES (`catch` block)
