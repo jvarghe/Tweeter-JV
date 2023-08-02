@@ -7,6 +7,19 @@
  */
 
 
+// IMPORTS
+
+// Calculates the time passed since a tweet was posted. Also added to
+// `index.html`.
+// const timeago = require("timeago.js");
+
+// PROBLEM: Having trouble importing `timeago`. I run into errors like "require
+// is not defined". I just blocked out the import statement and called it in
+// full `timeago.format()...` below.
+
+
+
+
 // Check the HTML document is ready before executing code.
 $(document).ready(function() {
 
@@ -212,7 +225,7 @@ $(document).ready(function() {
         <footer>
 
           <!-- TIME THAT THE TWEET WAS POSTED -->
-          <p>${tweet.created_at}</p>
+          <p>${timeago.format(tweet.created_at)}</p>
 
 
           <!-- SOCIAL MEDIA OPTIONS -->
