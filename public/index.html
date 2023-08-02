@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="styles/new-tweet.css" type="text/css">
 
   <!-- Tweet Body CSS -->
-  <link rel="stylesheet" href="styles/tweet-body.css" type="text/css">
+  <link rel="stylesheet" href="styles/tweet-container.css" type="text/css">
 
 
   <!-- JAVASCRIPT FILES -->
@@ -52,6 +52,9 @@
 
   <!-- Character Counter  -->
   <script type="text/javascript" src="./scripts/composer-char-counter.js"></script>
+
+  <!-- Client.js (Loads Tweets) -->
+  <script type="text/javascript" src="./scripts/client.js"></script>
 
 </head>
 
@@ -114,57 +117,16 @@
 
 
     <!-- TWEET DISPLAY CONTAINER  -->
-    <section id="Tweet-Body">
+    <section id="Tweets-Container">
 
       <!-- SECTION HEADING -->
       <h2>Recent Tweets</h2>
 
       <!-- TWEETS -->
-      <article>
+      <!-- This is where all the Tweets will be added dynamically, from
+           `client.js`.
+      -->
 
-        <!-- TWEET HEADER -->
-        <header>
-
-          <div>
-
-            <!-- USER'S PHOTO -->
-            <img src="images/user-image.png" alt="User's Photo">
-
-            <!-- USER'S REAL NAME -->
-            <p>Tom Riddle</p>
-
-          </div>
-
-          <!-- USER HANDLE -->
-          <a href="#">@LastOfTheGaunts</a>
-
-        </header>
-
-
-        <!-- TWEET BODY -->
-        <output>RISE UP DEATH EATERS! Strike back! Lord Voldemort commands it!
-          Do you love your master? Then do as I command. Show the Order of
-          Phoenix no quarter! Also, like my tweets! I command that too!
-        </output>
-
-
-        <!-- TWEET FOOTER -->
-        <footer>
-
-          <!-- TIME THAT THE TWEET WAS POSTED -->
-          <p>10 days ago</p>
-
-
-          <!-- SOCIAL MEDIA OPTIONS -->
-          <div>
-            <a href="#" alt="Flag Button"><i class="fa-solid fa-flag"></i></a>
-            <a href="#" alt="Retweet Button"><i class="fa-solid fa-retweet"></i></a>
-            <a href="#" alt="Heart Button"><i class="fa-solid fa-heart"></i></a>
-          </div>
-
-        </footer>
-
-      </article>
 
     </section>
 
