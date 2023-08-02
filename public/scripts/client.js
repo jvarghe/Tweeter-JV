@@ -159,7 +159,7 @@ $(document).ready(function() {
   // function in jQuery will convert all JSON into JavaScript objects.
   const loadTweets = function() {
 
-    // RETRIEVING DATA FROM THE BACKEND VIA AJAX CALL
+    // RETRIEVING DATA FROM THE BACKEND VIA AN AJAX CALL
     //
     // Make an AJAX call to the backend to retrieve submitted tweets. The
     // response should be a JSON object...
@@ -173,7 +173,7 @@ $(document).ready(function() {
       // seems like `$.ajax()` method has parsed that too! Apparently, it
       // returns an array of JS objects.
       success: function(tweetsArray) {
-        console.log("You successfully received Tweets from the Backend in JSON Format!");
+        console.log("You successfully received Tweets from the Backend!");
       },
 
       error: function(error) {
