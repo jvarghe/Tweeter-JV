@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // Log a message to the console once the web page has been loaded.
-  console.log("The document is ready!");
+  // console.log("The document is ready!");
 
 
   /* CHOOSING EVENTS
