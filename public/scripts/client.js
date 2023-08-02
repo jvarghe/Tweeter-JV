@@ -14,12 +14,19 @@ $(document).ready(function() {
   // console.log("The document is ready!");
 
 
-  // HANDLING NEW TWEETS
+  // HANDLING NEW TWEET SUBMISSIONS
 
-  // Event Handler: If a `Submit` event is triggered on the `#New-Tweet-Form`
-  // element (which is NOT a form, but the parent of one), it will trigger
-  // this function. It is an event handler listening for the `submit` action
-  // on the form in `#New-Tweet-Form`.
+  /* Event Handler: If a user decides to submit their own tweet, when they
+   * press submit, there needs to be an event handler to respond to it. This
+   * jQuery function is an event handler that listens for this event.
+   *
+   * There is an event listener on the `#New-Tweet-Form` element (which is NOT
+   * a form, but the parent of one). When the user hits `Submit`, the event will
+   * propagate up the DOM tree until it encounters the event listener.
+   *
+   * That will trigger this event handling function, which will respond to this
+   * event.
+   */
   $("#New-Tweet-Form").on("submit", function(event) {
 
     // The default behaviour when a form is submitted is to send the data to
@@ -60,9 +67,13 @@ $(document).ready(function() {
 
 
     // AJAX Call: Make an AJAX call to return data from the form to the server
-    // without refreshing the web page. Note that the AJAX call takes an object
-    // (??) which contains several keys like `url`, `type`, `data`, `success`
-    // and `error`. Pass the newly created tweet to the `/tweets` on the
+    // without refreshing the web page. Note that the AJAX function call takes
+    // only one required parameter, `url`. For some unknown reason, the
+    // professors are passing in an object which contains several keys like
+    // `url`, `type`, `data`, `success` and `error`. I guess this is an
+    // alternate way of passing arguments to AJAX.
+    //
+    // This method call passes the newly created tweet to the `/tweets` on the
     // backend.
     $.ajax({
 
@@ -84,41 +95,85 @@ $(document).ready(function() {
 
 
 
-  // LOADING EXISTING TWEETS
+  // LOAD EXISTING TWEETS
 
-  // Tweet data hardcoded here for temporary use. It will be replaced with
-  // an AJAX call later.
-  const tempTweets = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
+  // This function calls the `/tweets` endpoint to retrieve a list of submitted
+  // tweets from the "database". The response should be a JSON string; The AJAX
+  // function in jQuery will convert all JSON into JavaScript objects.
+  const loadTweets = function() {
 
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
+    // Make an AJAX call to the backend to retrieve submitted tweets. The
+    // response should be a JSON object...
+    $.ajax({
+      url: "/tweets",
+      type: "GET",
+
+      // Be aware that if you fetch JSON through jQuery, the `$.ajax()` method
+      // will automatically parse the JSON and turn it into a JavaScript object
+      // for you. In this case, we're working with an array of objects, and it
+      // seems like `$.ajax()` method has parsed that too! Apparently, it
+      // returns an array of JS objects.
+      success: function(tweetsArray) {
+        console.log("You successfully received Tweets from the Backend in JSON Format!");
       },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
+
+      error: function(error) {
+        console.log("You failed to get Tweets from the Backend!", error);
+      }
+
+    })
+      /* RETURNING VALUES FROM AN AJAX FUNCTION
+       *
+       * WARNING: Because AJAX is asynchronous, you cannot extract data as you
+       * would from a regular function. If you tried something like this,
+       *
+       *     const tweets = $.ajax({...});).
+       *
+       * it would not work. The return is no longer an array of JS objects, but
+       * somehow reverts back to raw HTTP objects. I've had no luck extracting
+       * tweets from that monstrosity.
+       *
+       * Remember that AJAX means Asynchronous JavaScript & XML. Once the AJAX
+       * function completes its asynchronous operation, it will return its
+       * payload. Use promises to call `renderTweets()` and pass in the array
+       * of tweets.
+       */
+      .then((tweetsArray) => {
+        renderTweets(tweetsArray);
+      })
+
+      // HANDLING ERRORS WITH PROMISES
+      //
+      // If the AJAX call fails, the `error` function inside it will display a
+      // message in the console and bubble up the error. We can catch the error
+      // here in this `catch` block and append it to the Tweets Container, so
+      // that the user can see it.
+      .catch((error) => {
+        $("#Tweets-Container").append("The load tweets operation failed! Error: ",
+          error.statusText + ".");
+      });
+
+  };
+
+
+  // This function takes in an array of tweets and appends them to Tweets
+  // Container. It gets called by `loadTweets()`.
+  const renderTweets = function(tweets) {
+
+    // Iterate over the `tweets` array...
+    for (let tweet of tweets) {
+
+      // Call `createTweetElement()` and pass in each tweet. This should return
+      // an HTML template body for every tweet. Append each tweet's template
+      // to the Tweets Container.
+      $("#Tweets-Container").append(createTweetElement(tweet));
     }
-  ];
+
+  };
 
 
-
-  // This function will take in a tweet object and generate and HTML template
-  // for it.
+  // This function will take in a tweet object and generate an HTML template
+  // for it. It gets called by `renderTweets()`.
   const createTweetElement = function(tweet) {
 
     // Use jQuery's `$` symbol to create new a HTML element. In this case,
@@ -177,24 +232,8 @@ $(document).ready(function() {
   };
 
 
-  // This function takes in an array of tweets and appends them to Tweets
-  // Container.
-  const renderTweets = function(tweets) {
-
-    // Iterate over the `tweets` array...
-    for (const tweet of tweets) {
-
-      // Call `createTweetElement()` and pass in each tweet. This should return
-      // an HTML template body for every tweet. Append each tweet's template
-      // to the Tweets Container.
-      $("#Tweets-Container").append(createTweetElement(tweet));
-    }
-
-  };
-
-
 
   // DRIVER CODE
-  renderTweets(tempTweets);
+  loadTweets();
 
 });
