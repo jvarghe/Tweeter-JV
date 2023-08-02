@@ -47,9 +47,9 @@ $(document).ready(function() {
     const tweetLength = tweetMax - characterCount;
 
     // Update the `counter` element each time the key is pressed.
-    // Read this as follows: In the `New-Tweet-Form` section, find the class
+    // Read this as follows: In the `New-Tweet-Section` section, find the class
     // `counter` element and change its `text` property.
-    $("#New-Tweet-Form .counter").text(tweetLength);
+    $("#New-Tweet-Section .counter").text(tweetLength);
 
 
     // This version uses DOM Traversal to find the element.
@@ -65,13 +65,13 @@ $(document).ready(function() {
       // Note: You need `.` and `#` in front of elements when you are calling
       // them, but not when you are using the `addClass` method (because it is
       // implied that it is a class; you don't need the `.` to prove it.).
-      $("#New-Tweet-Form .counter").addClass("Counter-Over-Limit");
+      $("#New-Tweet-Section .counter").addClass("Counter-Over-Limit");
 
       // ...otherwise, you will have to explicitly remove the class (to account
       // for cases when the user deletes characters to bring it under 140.).
     } else {
 
-      $("#New-Tweet-Form .counter").removeClass("Counter-Over-Limit");
+      $("#New-Tweet-Section .counter").removeClass("Counter-Over-Limit");
 
     }
 
