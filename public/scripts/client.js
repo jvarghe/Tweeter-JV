@@ -33,14 +33,14 @@ $(document).ready(function() {
    * press submit, there needs to be an event handler to respond to it. This
    * jQuery function is an event handler that listens for this event.
    *
-   * There is an event listener on the `#New-Tweet-Form` element (which is NOT
-   * a form, but the parent of one). When the user hits `Submit`, the event will
-   * propagate up the DOM tree until it encounters the event listener.
+   * There is an event listener on the `#New-Tweet-Section` element (which is
+   * NOT a form, but the parent of one). When the user hits `Submit`, the event
+   * will propagate up the DOM tree until it encounters the event listener.
    *
    * That will trigger this event handling function, which will respond to this
    * event.
    */
-  $("#New-Tweet-Form").on("submit", function(event) {
+  $("#New-Tweet-Section").on("submit", function(event) {
 
     // The default behaviour when a form is submitted is to send the data to
     // the backend and load the response page. This is not what we want here,
@@ -48,6 +48,15 @@ $(document).ready(function() {
     event.preventDefault();
 
     // console.log("New Tweet Submitted!");
+
+
+    /* FORM DATA VALIDATION
+     *
+     *
+     */
+
+    // const tweetLength = ${"#New-Tweet-Section form"}.val();
+
 
 
     /* SERIALIZING FORM DATA (INTO A QUERY STRING OR JSON STRING)
@@ -73,9 +82,9 @@ $(document).ready(function() {
      * server in the `data` field of the AJAX POST request.
      */
 
-    // console.log("Your Raw Tweet: ", $("#New-Tweet-Form form"));
+    // console.log("Your Raw Tweet: ", $("#New-Tweet-Section form"));
 
-    const newTweet = $("#New-Tweet-Form form").serialize();
+    const newTweet = $("#New-Tweet-Section form").serialize();
     // console.log("Your Serialized Tweet: ", newTweet);
 
 

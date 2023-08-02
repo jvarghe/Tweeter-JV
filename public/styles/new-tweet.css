@@ -1,5 +1,5 @@
 /* Targets the `section` that contains the New Tweet form. */
-#New-Tweet-Form {
+#New-Tweet-Section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,12 +7,12 @@
 }
 
 /* Targets the heading of the form ("Compose Tweet") */
-#New-Tweet-Form h2 {
+#New-Tweet-Section h2 {
   margin-bottom: 1rem;
 }
 
 /* Targets the form where Tweets are entered. */
-#New-Tweet-Form Form {
+#New-Tweet-Section Form {
   width: 90%;
 
   display: flex;
@@ -23,7 +23,7 @@
 
 
 /* Targets the Tweet form's main label ("What are you humming about?") */
-#New-Tweet-Form form label {
+#New-Tweet-Section form label {
   width: 100%;
 
   font-weight: 600;
@@ -31,7 +31,7 @@
 
 
 /* Targets the Tweet form's textarea element. */
-#New-Tweet-Form form textarea {
+#New-Tweet-Section form textarea {
   background-color: #F4F1EC;
 
   outline: none;
@@ -48,7 +48,7 @@
 
 
 /* Targets the div containing the `Tweet` button & `Counter` element. */
-#New-Tweet-Form form div {
+#New-Tweet-Section form div {
   width: 100%;
   margin-top: 1rem;
 
@@ -59,7 +59,7 @@
 
 
 /* Targets the `Tweet` submit button. */
-#New-Tweet-Form form button {
+#New-Tweet-Section form button {
   border: none;
 
   background-color: #424EA7;
@@ -70,14 +70,14 @@
 }
 
 /* Targets the `Tweet` submit button upon hover. */
-#New-Tweet-Form form button:hover {
+#New-Tweet-Section form button:hover {
   outline: 2px solid #638ff7;
   border: 1px solid #F4F1EC;
 }
 
 
 /* Targets the Tweet Character Count output element. */
-#New-Tweet-Form form output {
+#New-Tweet-Section form output {
   font-weight: 600;
 }
 
