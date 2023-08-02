@@ -158,6 +158,8 @@ $(document).ready(function() {
   // function in jQuery will convert all JSON into JavaScript objects.
   const loadTweets = function() {
 
+    // RETRIEVING DATA FROM THE BACKEND VIA AJAX CALL
+    //
     // Make an AJAX call to the backend to retrieve submitted tweets. The
     // response should be a JSON object...
     $.ajax({
@@ -198,7 +200,7 @@ $(document).ready(function() {
         renderTweets(tweetsArray);
       })
 
-      // HANDLING ERRORS WITH PROMISES
+      // HANDLING ERRORS WITH PROMISES (`catch` block)
       //
       // If the AJAX call fails, the `error` function inside it will display a
       // message in the console and bubble up the error. We can catch the error
@@ -212,6 +214,8 @@ $(document).ready(function() {
   };
 
 
+  // RENDER TWEETS TO WEB PAGE
+  //
   // This function takes in an array of tweets and appends them to Tweets
   // Container. It gets called by `loadTweets()`.
   const renderTweets = function(tweets) {
@@ -228,6 +232,8 @@ $(document).ready(function() {
   };
 
 
+  // GENERATE HTML TEMPLATES FOR EACH TWEET
+  //
   // This function will take in a tweet object and generate an HTML template
   // for it. It gets called by `renderTweets()`.
   const createTweetElement = function(tweet) {
