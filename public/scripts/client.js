@@ -70,20 +70,21 @@ $(document).ready(function() {
     const tweetLength = rawTweet.length;
 
 
+    // VALIDATION CHECKS
     // Check if the tweet is empty.
     if ((rawTweet === "") || (rawTweet === null)) {
-      alert("The tweet cannot be empty!");
-      console.log("The tweet cannot be empty!");
+
+      showError("❌ Error: Your tweet cannot be empty!");
+      console.log("Your tweet cannot be empty!");
       return;
 
       // Check if the tweet is longer than 140 characters.
     } else if (tweetLength > 140) {
 
-      alert("The tweet cannot be longer than 140 characters!");
-      console.log("The tweet cannot be longer than 140 characters!");
+      showError("❌ Error: Your tweet cannot be longer than 140 characters!");
+      console.log("Your tweet cannot be longer than 140 characters!");
       return;
-
-    };
+    }
 
 
     /* SERIALIZING FORM DATA (INTO A QUERY STRING OR JSON STRING)
@@ -162,6 +163,24 @@ $(document).ready(function() {
   });
 
 
+  // ERROR DISPLAY FUNCTIONS
+
+  // This function creates a slide down effect (using jQuery's `slideDown()`
+  // method) and displays an error message.
+  const showError = function(errorMessage) {
+
+    $("#Error-Container").slideDown().css("display", "block");
+    $("#Error-Message").text(errorMessage);
+
+  };
+
+
+  // This function creates a slide up effect, hiding any existing error
+  // messages.
+  const hideError = function() {
+    $("#Error-Container").slideUp();
+  };
+
 
   // LOAD EXISTING TWEETS
 
@@ -210,6 +229,19 @@ $(document).ready(function() {
        */
       .then((tweetsArray) => {
 
+        // CLEARING AWAY OLD ERROR MESSAGES
+        //
+        // There is one of two ways that `loadTweets()` gets called: When
+        // Tweeter's homepage is loaded and secondly, when a new Tweet is
+        // submitted.
+        //
+        // Putting a call to `hideError()` here ensures that an old error
+        // messages that are being displayed to the user will be hidden away
+        // both when a new page is loaded and when a new tweet is submitted.
+        hideError();
+
+        // EMPTY THE TWEETS CONTAINER OF ANY TWEETS BEING DISPLAYED
+        //
         // When a user submits a new tweet (via the event handler), the Tweets
         // Container will be updated. If there are any existing tweets displayed
         // there, they need to be cleared out because each call to

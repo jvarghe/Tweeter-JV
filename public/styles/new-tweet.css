@@ -6,13 +6,15 @@
   margin-bottom: 2rem;
 }
 
+
 /* Targets the heading of the form ("Compose Tweet") */
 #New-Tweet-Section h2 {
   margin-bottom: 1rem;
 }
 
+
 /* Targets the form where Tweets are entered. */
-#New-Tweet-Section Form {
+#New-Tweet-Section form {
   width: 90%;
 
   display: flex;
@@ -22,11 +24,20 @@
 }
 
 
+/* Targets the error `div` in the Tweet submission form. */
+#Error-Container {
+  background-color: #FFDE00;
+  font-weight: bolder;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  padding: 5px;
+}
+
+
 /* Targets the Tweet form's main label ("What are you humming about?") */
 #New-Tweet-Section form label {
-  width: 100%;
-
   font-weight: 600;
+  width: 100%;
 }
 
 
@@ -68,6 +79,7 @@
   font-weight: 600;
   text-transform: capitalize;
 }
+
 
 /* Targets the `Tweet` submit button upon hover. */
 #New-Tweet-Section form button:hover {

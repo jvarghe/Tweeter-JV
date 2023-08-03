@@ -119,10 +119,17 @@
       <!-- NEW TWEET FORM -->
       <form method="POST" action="/tweets/">
 
+        <!-- ERROR MESSAGES -->
+        <!-- Error Messages will be inserted into this `span` from `client.js`. -->
+        <div id="Error-Container"><span id="Error-Message"></span></div>
+
+
+        <!-- TWEET ENTRY ELEMENTS -->
         <label for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text" placeholder="Write your tweet here"></textarea>
 
 
+        <!-- TWEET SUBMIT & COUNTER ELEMENTS -->
         <div>
           <button type="submit">TWEET</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
