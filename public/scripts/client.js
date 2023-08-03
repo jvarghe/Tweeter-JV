@@ -257,20 +257,54 @@ $(document).ready(function() {
   };
 
 
+  // SANITIZE USER INPUT WITH AN ESCAPE FUNCTION TO AVOID CROSS-SITE SCRIPTING
+  // (XSS) ATTACKS
+  //
+  // This function takes in strings and runs them through the `createTextNode()`
+  // DOM method, which creates sanitized user input. It then returns this data
+  // to the caller.
+  const textEscapeFunction = function(string) {
+
+    // Create a `div`.
+    let div = document.createElement("div");
+
+    // Append a string to the `div` using `createTextNode()`, which is a DOM
+    // method that escapes unsafe characters.
+    div.appendChild(document.createTextNode(string));
+
+    return div.innerHTML;
+  };
+
+
   // GENERATE HTML TEMPLATES FOR EACH TWEET
   //
   // This function will take in a tweet object and generate an HTML template
   // for it. It gets called by `renderTweets()`.
   const createTweetElement = function(tweet) {
 
+    // SANITIZE USER INPUT TO AVOID CROSS-SITE SCRIPTING (XSS) ATTACKS
+
+    // Use the escape function to create sanitized input. This code should
+    // now be free from Cross-Site Scripting (XSS) attacks. Instead of directly
+    // embedding user input (`tweet.content.text`) in your template, you can
+    // use JavaScript variables instead (`tweetText`).
+    //
+    // Here I am only sanitizing the tweet text body, but in reality, you should
+    // also sanitize any kind of untrusted user input, like the user's name,
+    // avatars, handle etc.
+    const tweetText = textEscapeFunction(tweet.content.text);
+
+
+    // CREATE AN HTML TEMPLATE
+
     // Use jQuery's `$` symbol to create new a HTML element. In this case,
     // because you want to return an article element, declare it as shown.
     // Note that that you need `<` and `>` included.
-    const $tweet = $("<article class='tweet'>");
+    const $tweet = $(`<article class="tweet">`);
 
     // Now the HTML element has been created, append the template that you
-    // want to display to the user. Use `jquery` and `timeago` to insert values
-    // into the template.
+    // want to display to the user. Use jquery/JS variables and `timeago` to
+    // insert values into the template.
     $tweet.append(
       `
         <!-- TWEET HEADER -->
@@ -293,7 +327,7 @@ $(document).ready(function() {
 
 
         <!-- TWEET BODY -->
-        <output>${tweet.content.text}</output>
+        <output>${tweetText}</output>
 
 
         <!-- TWEET FOOTER -->
