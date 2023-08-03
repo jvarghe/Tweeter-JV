@@ -24,7 +24,8 @@ $(document).ready(function() {
    *  * `change`: is triggered like `blur`. If you click on the element and
    *    make any changes within, and click elsewhere in the web page, it checks
    *    if the text has changed since the last time. If so, it is triggered.
-   *    But changes are NOT counted until
+   *    But changes are NOT counted until after focus is moved away from an
+   *    element.
    *
    *  * `input`: is similar to keypress; is triggered when values are added to
    *    the target element.

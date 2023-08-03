@@ -84,6 +84,7 @@ $(document).ready(function() {
       showError("❌ Error: Your tweet cannot be longer than 140 characters!");
       console.log("Your tweet cannot be longer than 140 characters!");
       return;
+
     }
 
 
