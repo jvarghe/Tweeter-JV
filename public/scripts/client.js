@@ -140,6 +140,17 @@ $(document).ready(function() {
 
       success: function(result) {
         console.log("Your Tweet was Successfully Submitted!");
+
+        // WHEN A NEW TWEET HAS BEEN SUCCESSFULLY SUBMITTED
+        //
+        // If the tweet was successfully submitted, clear the `textarea` of the
+        // tweet that was just submitted.
+        $("#tweet-text").val('');
+
+        // Then, call `loadTweets()` within an AJAX call to refresh the Tweets
+        // Container WITHOUT refreshing the web page. The user should be able
+        // to immediately see the new tweet at the top of the Tweets Container.
+        loadTweets();
       },
 
       error: function(error) {
@@ -199,20 +210,27 @@ $(document).ready(function() {
        */
       .then((tweetsArray) => {
 
-        // Reverse the tweets array so that the most recent tweets appear at
-        // the top of the Tweets Container.
-        const reversedArray = tweetsArray.reverse();
-        renderTweets(reversedArray);
+        // When a user submits a new tweet (via the event handler), the Tweets
+        // Container will be updated. If there are any existing tweets displayed
+        // there, they need to be cleared out because each call to
+        // `loadTweets()` re-loads the entire contents of the Tweet database.
+        // If they aren't cleared out, duplicates of the tweets would be
+        // displayed.
+        $("#Tweets-Container").empty();
+
+        // Call `renderTweets()` and pass in the array so that it can be pushed
+        // to the web page.
+        renderTweets(tweetsArray);
       })
 
       // HANDLING ERRORS WITH PROMISES (`catch` block)
       //
       // If the AJAX call fails, the `error` function inside it will display a
       // message in the console and bubble up the error. We can catch the error
-      // here in this `catch` block and append it to the Tweets Container, so
+      // here in this `catch` block and prepend it to the Tweets Container, so
       // that the user can see it.
       .catch((error) => {
-        $("#Tweets-Container").append("The load tweets operation failed! Error: ",
+        $("#Tweets-Container").prepend("The load tweets operation failed! Error: ",
           error.statusText + ".");
       });
 
@@ -229,9 +247,11 @@ $(document).ready(function() {
     for (let tweet of tweets) {
 
       // Call `createTweetElement()` and pass in each tweet. This should return
-      // an HTML template body for every tweet. Append each tweet's template
-      // to the Tweets Container.
-      $("#Tweets-Container").append(createTweetElement(tweet));
+      // an HTML template body for every tweet. You can either APPEND or PREPEND
+      // each tweet to the Tweets Container. However, since we want the newest
+      // tweets to appear at the top of the web page, use `prepend` to put them
+      // at the top of the Tweets Container.
+      $("#Tweets-Container").prepend(createTweetElement(tweet));
     }
 
   };
@@ -248,8 +268,9 @@ $(document).ready(function() {
     // Note that that you need `<` and `>` included.
     const $tweet = $("<article class='tweet'>");
 
-
-    // Append the full body of the HTML template to `$tweet`.
+    // Now the HTML element has been created, append the template that you
+    // want to display to the user. Use `jquery` and `timeago` to insert values
+    // into the template.
     $tweet.append(
       `
         <!-- TWEET HEADER -->
@@ -290,9 +311,8 @@ $(document).ready(function() {
           </div>
 
         </footer>
-      `
 
-    );
+      `);
 
 
     return $tweet;
