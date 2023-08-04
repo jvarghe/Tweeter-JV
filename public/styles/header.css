@@ -16,6 +16,12 @@
 }
 
 
+#User-Profile div img {
+  height: 300px;
+  width: 230px;
+}
+
+
 /* Targets the `User Name` `h2` Heading. */
 #User-Profile div h2 {
   margin-top: -0.5rem;
