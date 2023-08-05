@@ -367,6 +367,9 @@ $(document).ready(function() {
         <footer>
 
           <!-- TIME THAT THE TWEET WAS POSTED -->
+          <!-- Timeago will convert the long date numbers in the "database" into
+               how long ago it was from the present (e.g. "2 days ago").
+          -->
           <p>${timeago.format(tweet.created_at)}</p>
 
 
